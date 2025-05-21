@@ -26,3 +26,13 @@ baris pertama memberitahu server untuk mendengarkan koneksi TCP pada port 8080, 
 ```
 port diubah ke 8080 agar terhubung ke port yang sama dengan port yang digunakan server.
 
+## 2.3
+![Add sender IP and port to message](/image/image%20copy.png)
+```rust
+\\ server.rs
+    if let Some(text) = msg.as_text() {
+        println!("From client {addr:?} {text:?}");
+        bcast_tx.send(format!("{addr}: {text}"))?;
+    }
+```
+Baris kedua membuat format teks yang dicetak dalam server menampilkan address dan port client. Baris ketiga memformat pesan yang dikirimkan ke client untuk mengandung address pengirim.
